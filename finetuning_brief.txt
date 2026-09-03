@@ -1,0 +1,113 @@
+FINE-TUNING BRIEF — Urdu Piper voice, English-loanword pronunciation
+Local note. Date: 2026-09-03.
+
+================================================================
+0. WHAT AND WHY
+================================================================
+Production Urdu voice = Piper `ur_PK-aegis_female-medium` (VITS, espeak
+`ur`, 22.05 kHz). It says plain Urdu well but mangles English loanwords:
+"keypad" -> "ki pat", "transaction"/"balance" muddy.
+
+Tried and rejected (by ear, on prod):
+  - Urdu respellings (کِی پَڈ / کی پَیڈ)
+  - inline espeak phonemes [[kˈiːpæd]]  -> "ki pat"
+  - Latin passthrough "keypad" (current _UR_SPEAK_ENGLISH)  -> still wrong
+  - reword the prompts to avoid the word  (interim, shipped for keypad)
+
+"Adding /æ/" is the WRONG frame. espeak `ur` NEVER emits /æ/:
+  "keypad"      -> kˈiːpad      (long iː, SHORT a, d)
+  "transaction" -> tɹansˈakʃən
+  "balance"     -> bˈaləns
+Phoneme id 39 (æ) is a dead slot in this frontend; forcing it is why the
+[[..æ..]] attempt failed. The target is: make the model render the a-based
+English phoneme SHAPES espeak already produces (kˈiːpad, tɹansˈakʃən, ...)
+cleanly. Those use ids the voice already has, just coarticulated wrong for
+loanword shapes.
+
+================================================================
+1. APPROACH: LOW-RANK ADAPTATION (not a full fine-tune)
+================================================================
+A full fine-tune rewrites every weight -> risk of plain-Urdu regression and
+voice drift on a live bank line, and you can only *hope* it didn't happen.
+
+Instead: freeze 100% of the model, inject low-rank adapters into the text
+encoder (attention q/k/v/o + FFN + proj, all `nn.Conv1d(c,c,1)` = linear),
+train ONLY the adapters (~1.1% of params, ~260 K), then fold them back into
+the weights at export -> a normal Piper ONNX, no runtime change.
+
+Guarantees:
+  - adapters are zero-initialised -> before training the model is bit-exact
+  - scale=0 at any point -> exact original voice
+  - merge is verified bit-identical to the adapted forward pass
+  - the base weights are never touched, so plain Urdu cannot drift
+
+Verified locally 2026-09-03: inject 37 convs, 263 K trainable (1.1%),
+zero-init no-op confirmed, merge == adapted (max diff 0.0).
+
+================================================================
+2. BASE CHECKPOINT
+================================================================
+No Aegis .ckpt is published (only the ONNX). Lineage: hi_IN/rohan ->
+Fasih ur_PK-male (IhorShevchuk, ckpt published) -> Aegis (Muhammad Mahwiz
+Khalil / Proxima AI, female fine-tune of Fasih, MIT + attribution required).
+
+`finetune/base/build_ckpt_from_onnx.py` grafts the Aegis ONNX generator
+onto a Fasih ckpt (Fasih supplies only enc_q + discriminator, both
+training-only, not the voice). Verified: 349/350 tensors, 0 shape
+mismatches. Or ask mahwizzzz for the real .ckpt.
+
+================================================================
+3. DATASET (the only remaining gap)
+================================================================
+Searched HF thoroughly — NO dataset of female Urdu speech with correctly
+pronounced English loanwords exists:
+  - Urdu TTS sets (mahwizzzz/UAT, HamzaSidhu...) = plain/literary Urdu
+  - code-switching sets (codesaviours x12...)   = TEXT only, Roman Urdu
+  - Urdu ASR sets (ASLP-lab/UrduSpeech, CV, ...) = multi-speaker, noisy, 16k
+
+So ~120-250 clips must be made:
+  - RECORD a female PK-Urdu speaker reading data/sentences_ur.txt
+    (~15 min; keeps a real owned voice) — best
+  - ElevenLabs multilingual, voice cloned from
+    src/sdr_agent/assets/female_voice_urdu.wav -> stays Aegis-like (paid)
+  - Azure ur-PK-UzmaNeural (free tier; fixed voice, not Aegis)
+Because the base is frozen, NO plain-Urdu padding is needed — the corpus
+is purely loanword phrases.
+
+================================================================
+4. VALIDATION
+================================================================
+finetune/low-rank-adaptation/verify.py renders BASE vs BASE+adapter:
+  - plain-Urdu lines  -> mel-L1 ~0 (proves no regression)
+  - loanword lines     -> should move, listen
+Also A/B the test.md S1-S4 replies, and check the exported .onnx.json
+phoneme_id_map is byte-identical (adapt_speech_text + [[..]] depend on it).
+--scale lets you dial the adapter 0->1 if it over-corrects.
+
+================================================================
+5. FILES
+================================================================
+finetune/
+  finetune_low_rank_adaptation_colab.ipynb   the Colab pipeline
+  run_colab.sh                               one-shot
+  base/build_ckpt_from_onnx.py               Aegis ONNX -> trainable ckpt
+  base/onnx_weights_dump.py
+  low-rank-adaptation/
+    adapter.py        LoRAConv1d + inject / freeze / merge / scale
+    train.py          frozen base, trains only the adapters (piper Trainer)
+    merge_export.py   fold adapter into weights -> plain ckpt -> ONNX
+    verify.py         base vs adapter A/B, scale sweep
+  data/
+    build_corpus.py   -> sentences_ur.txt   (NEEDS NATIVE REVIEW)
+    sentences_ur.txt
+    coverage_check.py per-loanword utterance count + espeak IPA
+    make_dataset.py   sentences -> LJSpeech via elevenlabs / azure / recorded
+
+================================================================
+6. RUN (GPU box / Colab)
+================================================================
+  bash finetune/run_colab.sh          # deps, graft, dataset, adapter, merge, export
+Env: DATASET_DIR=... or ELEVENLABS_API_KEY+ELEVENLABS_VOICE_ID or AZURE_*;
+     RANK=8 ALPHA=8 LR=2e-4 MAX_STEPS=1500
+Output: ur_PK-aegis_female-medium.onnx(.json) v2 + verify_pre/ verify_post/.
+Ship: drop into models/piper/ur-aegis-female/ as v2, keep v1 for rollback.

@@ -1,0 +1,8 @@
+*.ckpt
+*.onnx
+*.wav.tmp
+dataset.zip
+outputs/
+__pycache__/
+.ipynb_checkpoints/
+.venv/
