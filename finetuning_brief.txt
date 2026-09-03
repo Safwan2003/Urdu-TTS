@@ -47,14 +47,13 @@ zero-init no-op confirmed, merge == adapted (max diff 0.0).
 ================================================================
 2. BASE CHECKPOINT
 ================================================================
-No Aegis .ckpt is published (only the ONNX). Lineage: hi_IN/rohan ->
-Fasih ur_PK-male (IhorShevchuk, ckpt published) -> Aegis (Muhammad Mahwiz
-Khalil / Proxima AI, female fine-tune of Fasih, MIT + attribution required).
+Lineage: hi_IN/rohan -> Fasih ur_PK-male (IhorShevchuk, ckpt published)
+-> Aegis (Muhammad Mahwiz Khalil / Proxima AI, female fine-tune of Fasih,
+MIT + attribution required).
 
-`finetune/base/build_ckpt_from_onnx.py` grafts the Aegis ONNX generator
-onto a Fasih ckpt (Fasih supplies only enc_q + discriminator, both
-training-only, not the voice). Verified: 349/350 tensors, 0 shape
-mismatches. Or ask mahwizzzz for the real .ckpt.
+The Aegis student .ckpt goes at /content/aegis-female.ckpt in Colab
+(cell 5 validates it, cell 5b plays it). No fallback: the notebook stops
+if it is missing.
 
 ================================================================
 3. DATASET (the only remaining gap)
