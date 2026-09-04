@@ -154,23 +154,46 @@ zero order assumptions. The circular self-check that hid this before is gone.
 Also fixed earlier same session: dp.flows.0.logs was `-log(onnx::Exp_*)`;
 correct is `-onnx::Exp_*` (the initializer IS -logs, feeding an Exp node).
 
+DONE since:
+  - Graft wired into notebook cell 5 (build_ckpt_from_onnx inline). Bit-exact.
+  - Drive integration: cell 1b mounts MyDrive/aegis-urdu-loanword, cells 3/4/5
+    pull dataset / ONNX / ckpt from it.
+  - Notebook run on Colab: base voice (cell 5b) GOOD. But cell 8 A/B: the LoRA
+    samples were PURE NOISE (even PLAIN L1 ~0.1, not ~0).
+
+ROOT CAUSE of the LoRA noise: training ran with a RANDOM, FROZEN enc_q
+(posterior encoder) and no discriminator — the Aegis ONNX has neither, and the
+graft left them fresh-init. In piper's VITS training_step the KL term
+kl_loss(z_p, logs_q, m_p, logs_p) is the ONLY loss with a gradient path to the
+LoRA adapters (dec + enc_q are frozen; mel/adv losses can't reach the adapters).
+z_p/logs_q come from the garbage enc_q -> KL drags the adapters' m_p/logs_p to
+garbage -> inference noise.
+FIX: graft model_g.enc_q.*, model_g.dp.post_*, model_g.dp.flows.1.* and
+model_d.* from the public Fasih ckpt
+(rhasspy/piper-checkpoints : ur/ur_PK/fasih/medium/epoch=3206-step=383452.ckpt,
+846 MB). Fasih == the exact ckpt Aegis was fine-tuned from; keys + shapes match
+the piper1-gpl SynthesizerTrn 1:1 (verified). Inference path untouched -> the
+merged ckpt is still bit-exact to the Aegis ONNX. tools/add_fasih_parts.py does
+the merge; notebook cell 5 now does it automatically (downloads Fasih unless
+DRIVE/fasih.ckpt is present) whenever the ckpt has no model_d.*.
+The full trainable ckpt (282 MB) is at outputs/aegis-female.ckpt -- upload it to
+Drive replacing the 95 MB one to skip the Fasih download.
+
+ALSO FIXED: notebook cells 4 and 24 both ran the same non-idempotent
+`sed .../torch.onnx.export(dynamo=False,/` -> export_onnx.py ended up with
+`dynamo=False,dynamo=False,` -> SyntaxError at merge/export. Both are now
+`grep -q dynamo=False || sed ...`.
+
 NEXT STEPS (in order):
-  1. Confirm outputs/ckpt_v2_*.wav sounds clean+female to the user (expected:
-     yes — it's bit-identical to the ONNX internally).
-  2. Wire into the notebook: cell 5/12 currently hard-errors if
-     /content/aegis-female.ckpt is missing. Replace with: if missing, build it
-     from /content/aegis.onnx using tools/build_ckpt_from_onnx.py's logic
-     (inline it as a cell; point PIPER_SRC at /content/piper1-gpl/src). Keep
-     cell 5b (the listen gate) as-is.
-  3. enc_q + discriminator + dp.post_* + dp.flows.1 are still fresh-init in the
-     ckpt (fine to LOAD and to listen; they're training-only). For the LoRA run
-     the base is frozen and only text-encoder adapters train, so a fresh disc
-     matters less — but if GAN training misbehaves, graft model_d + enc_q from
-     the public Fasih ckpt (see section 3) and keep LR <= 1e-4, listen early.
-  4. Run the notebook end to end: Colab T4, Run all, ~30-45 min, LoRA train,
-     A/B (PLAIN L1 ~0, LOAN moves), merge, export v2 ONNX. Diff the exported
-     .onnx.json phoneme_id_map against the current one — MUST be byte-identical.
-  5. Ship v2 .onnx + .onnx.json into the app repo models/piper/ur-aegis-female/
+  1. Replace DRIVE/aegis-female.ckpt with outputs/aegis-female.ckpt (the 282 MB
+     trainable one), re-run the notebook from cell 5.
+  2. Cell 20 should print "warmstart: 0 missing" (was 111 -- the discriminator).
+     Cell 8 A/B: PLAIN L1 ~0, LOAN lines move and stay clean. If the adapter
+     over/under-moves, tune RANK/ALPHA/LR/MAX_STEPS in cell 7 (currently
+     8/8/2e-4/1500) -- consider LR 1e-4. Only tune with evidence.
+  3. Merge + export (cell 9), diff the exported .onnx.json phoneme_id_map vs the
+     current one -- MUST be byte-identical.
+  4. Ship v2 .onnx + .onnx.json into the app repo models/piper/ur-aegis-female/
      (keep v1 for rollback).
 
 SECONDARY / NOT STARTED:
