@@ -64,13 +64,18 @@ order, or flows.6's weights land in flows.0's slots and the voice is pure
 noise. Also dp.flows.0.logs == -onnx::Exp_* (the initializer is -logs, feeding
 an Exp node), NOT -log(onnx::Exp_*).
 
-enc_q + discriminator + dp.post_* + dp.flows.1 are training-only, absent from
-the ONNX, left at fresh init. Fine to load/listen; if GAN training misbehaves,
-graft them from the public Fasih ckpt (rhasspy/piper-checkpoints) at LR <= 1e-4.
+enc_q (posterior encoder), the discriminator, and dp.post_*/dp.flows.1 are
+training-only and absent from the ONNX, so they start from init. They are NOT
+grafted from any other voice (no Fasih / no male model). Instead the training
+cell UNFREEZES enc_q and trains it alongside the LoRA adapters: the mel loss
+runs enc_q -> frozen female decoder, so enc_q learns female latents, which
+become the KL target the adapters fit. enc_q and the discriminator are
+discarded at export -> the shipped model is 100% Aegis-female.
 
-Cell 5b plays the rebuilt voice — must be clean, natural, female before you
-train. If you have a real Aegis .ckpt, drop it at /content/aegis-female.ckpt
-and cell 5 uses it as-is.
+Cell 5b plays the rebuilt base (frozen, no adapter) — must be clean, natural,
+female before you train. The frozen base gets NO gradient during training, so
+it cannot drift; if cell 5b is noisy the cause is stale /content state from an
+earlier run (use Runtime > Disconnect and delete runtime).
 
 ================================================================
 3. DATASET (the only remaining gap)

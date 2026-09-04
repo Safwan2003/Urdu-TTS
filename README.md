@@ -15,23 +15,26 @@ One notebook. Nothing to install locally.
 
 ## The base checkpoint
 
-Piper trains from a `.ckpt`; Aegis ships only the inference ONNX. **Cell 5 of
-the notebook rebuilds a trainable checkpoint from that ONNX** — it grafts every
-weight (text encoder, duration predictor, flow, vocoder) onto a fresh piper1-gpl
-generator, verified **bit-exact** against the ONNX. Nothing to upload. If you do
-have a real Aegis `.ckpt`, drop it at `/content/aegis-female.ckpt` and cell 5
-uses it as-is.
+Piper trains from a `.ckpt`; Aegis ships only the inference ONNX. **Cell 5
+rebuilds a trainable checkpoint purely from that ONNX** — grafting every weight
+(text encoder, duration predictor, flow, vocoder) onto a fresh piper1-gpl
+generator, verified **bit-exact** against the ONNX. No upload, no other voice
+mixed in. `enc_q` (posterior encoder) and the discriminator aren't in the ONNX
+— they're training-only; cell 7 **trains `enc_q` from scratch** on the female
+clips and both are discarded at export, so the shipped model is 100%
+Aegis-female.
 
 ## How to run
 
-1. Put an `aegis-urdu-loanword/` folder at the top of your Google Drive with:
-   `dataset/` (`metadata.csv` + `wav/`), `ur-aegis-female/` (the Aegis `.onnx`
-   + `.json`), and — optionally — `aegis-female.ckpt`. Cell 1b mounts it; cells
-   3–5 pull from it. (No Drive? cell 3 still takes an uploaded `dataset.zip`,
-   cell 4 falls back to Hugging Face for the ONNX.)
+1. Put an `aegis-urdu-loanword/` folder at the top of your Google Drive with
+   `dataset/` (`metadata.csv` + `wav/`) and `ur-aegis-female/` (the Aegis
+   `.onnx` + `.json`). Nothing else. (No Drive? cell 3 still takes an uploaded
+   `dataset.zip`, cell 4 falls back to Hugging Face for the ONNX.)
 2. Open `finetune_low_rank_adaptation_colab.ipynb` in Google Colab.
    **Runtime → Change runtime type → GPU (T4)**.
 3. **Run all.** ~30–45 min. Approve the Drive mount prompt.
+   (On a re-run: **Runtime → Disconnect and delete runtime** first — a plain
+   restart keeps `/content` and stale files there poison the run.)
 4. **Cell 5b** plays the base voice — confirm it is clean and female before
    the training cell spends 20 min on it.
 5. Download `ur_PK-aegis_female-medium.onnx` + `.onnx.json` (last cell).
@@ -43,9 +46,9 @@ uses it as-is.
 | 2 | installs piper1-gpl (training) — `scikit-build` first, then the build |
 | 3 | unzips your dataset (or rebuilds it from Uplift AI) |
 | 4 | pulls the Aegis ONNX (phonemisation + config) |
-| 5 | **rebuilds `/content/aegis-female.ckpt` from the ONNX** (bit-exact graft) |
-| 5b | **plays the base voice — must be clean female speech, else stop** |
-| 6–7 | injects low-rank adapters into the text encoder (~1% of weights), **freezes everything else**, trains only the adapters |
+| 5 | **rebuilds `/content/aegis-female.ckpt` purely from the ONNX** (bit-exact graft) |
+| 5b | **plays the frozen base voice — must be clean female speech, else stop** |
+| 6–7 | injects low-rank adapters into the text encoder, freezes the base, trains the adapters **+ `enc_q`** (so the KL target is a real female posterior) |
 | 8 | A/B: plain-Urdu output must be identical to base (mel-L1 ≈ 0); loanwords should move |
 | 9 | folds the adapter into the weights → a normal Piper ONNX, `phoneme_id_map` unchanged |
 | 10 | final listen + download |
