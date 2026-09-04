@@ -24,16 +24,17 @@ uses it as-is.
 
 ## How to run
 
-1. `cd dataset && zip -r /tmp/dataset.zip metadata.csv wav`
-   (or bring your own — `metadata.csv` lines `wav/0001.wav|<urdu text>`
-   `|`-delimited + a `wav/` folder of **22 050 Hz mono** WAVs).
+1. Put an `aegis-urdu-loanword/` folder at the top of your Google Drive with:
+   `dataset/` (`metadata.csv` + `wav/`), `ur-aegis-female/` (the Aegis `.onnx`
+   + `.json`), and — optionally — `aegis-female.ckpt`. Cell 1b mounts it; cells
+   3–5 pull from it. (No Drive? cell 3 still takes an uploaded `dataset.zip`,
+   cell 4 falls back to Hugging Face for the ONNX.)
 2. Open `finetune_low_rank_adaptation_colab.ipynb` in Google Colab.
    **Runtime → Change runtime type → GPU (T4)**.
-3. Upload `dataset.zip` (Files pane).
-4. **Run all.** ~30–45 min.
-5. **Cell 5b** plays the rebuilt base voice — confirm it is clean and female
-   before the training cell spends 20 min on it.
-6. Download `ur_PK-aegis_female-medium.onnx` + `.onnx.json` (last cell).
+3. **Run all.** ~30–45 min. Approve the Drive mount prompt.
+4. **Cell 5b** plays the base voice — confirm it is clean and female before
+   the training cell spends 20 min on it.
+5. Download `ur_PK-aegis_female-medium.onnx` + `.onnx.json` (last cell).
 
 ## What it does
 
