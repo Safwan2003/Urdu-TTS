@@ -1,0 +1,190 @@
+RESUME PROMPT — aegis-urdu-loanword
+Last worked: 2026-09-04.  Read this top-to-bottom, then read the files it points
+at, then continue from "WHERE WE ARE / NEXT".
+
+*** 2026-09-04 UPDATE: the ONNX->ckpt graft is SOLVED and verified bit-exact.
+    Root cause was flow-block ordering (see section 5). Remaining work is
+    wiring it into the notebook + the LoRA run. ***
+
+================================================================
+0. HOW TO USE THIS FILE
+================================================================
+You are resuming work on this repo. Do this in order:
+  1. Read  README.md            — what the repo is, how the Colab notebook runs
+  2. Read  finetuning_brief.txt — the problem statement + LoRA rationale + risks
+  3. Read  finetune_low_rank_adaptation_colab.ipynb  — the actual pipeline
+     (cells 0-25; cell 5/12 is the checkpoint gate, 5b/14 the listen test)
+  4. Read  tools/build_ckpt_from_onnx.py  and  tools/verify_voice.py
+  5. Skim  dataset/metadata.csv (123 lines) — the training corpus
+Then the sections below.
+
+Do NOT go spelunking in sibling repos (VoxReach-Bank, Urdu_TTS_VITS2, …). The
+prior finetune history lived in VoxReach-Bank and was split out; that context is
+summarised in section 3 here. The one sibling path we USE is a piper1-gpl
+checkout for the model code (section 4).
+
+================================================================
+1. THE GOAL
+================================================================
+Production Urdu TTS voice = Piper `ur_PK-aegis_female-medium` (VITS, espeak `ur`,
+22.05 kHz). It says plain Urdu well but mangles English loanwords inside Urdu
+sentences ("keypad" -> "ki pat", "transaction"/"balance" muddy).
+
+Fix = LoRA fine-tune: freeze 100% of the model, inject low-rank adapters into the
+text encoder (~1% of params), train ONLY the adapters on a loanword-dense
+corpus, fold them back into the weights at export -> a normal Piper ONNX with a
+byte-identical phoneme_id_map. Because the base is frozen, plain Urdu cannot
+regress. The whole pipeline is the Colab notebook.
+
+================================================================
+2. THE BLOCKER WE ARE SOLVING
+================================================================
+Piper trains from a Lightning `.ckpt`. Aegis ships ONLY an inference `.onnx`
+(mahwizzzz/piper-voice-ur-aegis-female on HF — ONNX + json, no ckpt). The
+notebook (cell 5/12) currently HARD-ERRORS if `/content/aegis-female.ckpt` is
+absent — commit 2700a31 removed the old Fasih fallback claiming "the checkpoint
+is in hand", but it is NOT in the repo and no Aegis ckpt is published anywhere.
+
+USER'S DECISION (2026-09-04): rebuild the trainable `.ckpt` from the Aegis ONNX
+("make it a checkpoint, then test at the cell whether it's correct"). Do NOT
+pursue asking the author / other routes unless the graft proves unfixable.
+
+================================================================
+3. WHAT THE ONNX->CKPT GRAFT LOOKS LIKE  (verified facts, 2026-09-04)
+================================================================
+Base ONNX: ur-aegis-female/ur_PK-aegis_female-medium.onnx  (63 MB, untracked,
+  gitignored by *.onnx; also cached at
+  ~/.cache/huggingface/hub/models--rhasspy--piper-voices/.../ur/ur_PK/aegis_female)
+Config:    same file + ".json"  — num_symbols 256, phoneme_id_map (æ=39, ː=122),
+  hop 256, sr 22050.  NO arch params in the json.
+
+ARCH (piper "medium" == ModelAudioConfig.low_quality(), confirmed against
+piper1-gpl config.py):
+  spec_channels=513, inter_channels=192, hidden_channels=192, filter_channels=768,
+  n_heads=2, n_layers=6, kernel_size=3, p_dropout=0.1,
+  resblock="2", resblock_kernel_sizes=(3,5,7),
+  resblock_dilation_sizes=((1,2),(2,6),(3,12)),
+  upsample_rates=(8,8,4), upsample_initial_channel=256,
+  upsample_kernel_sizes=(16,16,8), n_speakers=1, gin_channels=0, use_sdp=True
+
+The ONNX has 350 initializers:
+  - 296 NAMED  (enc_p.*, dp.*, flow.*, dec.conv_pre/conv_post) — map 1:1 to
+    piper1-gpl SynthesizerTrn params by exact name. VERIFIED: all 296 are a
+    BYTE-EXACT match to a generator param (0 name misses, 0 shape misses).
+  - 53  OPAQUE `onnx::Conv_*` / `onnx::ConvTranspose_*` — weight-norm-folded
+    convs whose names were dropped by constant-folding at export. **Route each
+    one by its ONNX NODE NAME, never by order** — the exporter traces the flow
+    in REVERSE, so the folded convs appear flows.6, flows.4, flows.2, flows.0,
+    then dec (forward). Node name -> param, e.g.
+        /flow/flows.6/enc/in_layers.0/Conv -> flow.flows.6.enc.in_layers.0.weight_v
+        /dec/ups.0/ConvTranspose           -> dec.ups.0.weight_v
+        /dec/resblocks.0/convs.1/Conv      -> dec.resblocks.0.convs.1.weight_v
+    Then weight_v := W_onnx and weight_g := ||W_onnx|| over dims!=0, so
+    torch._weight_norm(v,g,0) reproduces W_onnx.
+    VERIFIED bit-exact end to end (see section 5).
+  - 1  `onnx::Exp_9030` (shape 2,1): feeds node `/dp/flows.0/Exp`, i.e. it IS
+    `-logs` of the SDP's ElementwiseAffine (dp.flows.0). So
+        dp.flows.0.logs := -onnx::Exp_9030      (NOT -log(...) — that was a bug)
+    dp.flows.0.m comes through NAMED and is exact.
+
+NOT in the ONNX (training-only, don't affect inference; left at fresh random
+init in the ckpt, loaded strict=False):
+  - enc_q.*            (posterior encoder — training only)
+  - dp.post_*          (dp.post_pre/post_proj/post_convs/post_flows — training only)
+  - dp.flows.1.*       (first ConvFlow — the reverse SDP DROPS it:
+        `flows = list(reversed(self.flows)); flows = flows[:-2] + [flows[-1]]`)
+  - the MPD/MRD discriminator (model_d.*) — not needed to LOAD or to listen;
+    NEEDED for good GAN training. Options if training quality is bad: graft
+    model_d + enc_q from the public Fasih ckpt
+    (rhasspy/piper-checkpoints : ur/ur_PK/fasih/medium/epoch=3206-step=383452.ckpt),
+    or just train with a fresh disc at low LR and listen early.
+
+================================================================
+4. TOOLS IN THIS REPO  (written 2026-09-04, run on CPU, ~1 min each)
+================================================================
+All three tools take PIPER_SRC from the env (default /content/piper1-gpl/src).
+Local dev: PIPER_SRC=/data/my_projects/Urdu_TTS_VITS2/.cache/piper1-gpl/src
+(VERIFIED identical to a fresh clone of github.com/OHF-voice/piper1-gpl for
+models.py/modules.py/attentions.py/transforms.py/commons.py/lightning.py).
+
+tools/build_ckpt_from_onnx.py
+    PIPER_SRC=... python3 tools/build_ckpt_from_onnx.py \
+        --onnx ur-aegis-female/ur_PK-aegis_female-medium.onnx \
+        --out  /tmp/aegis-female.ckpt          # add --dry-run for the report
+    Builds a fresh SynthesizerTrn, grafts per section 3, writes
+    {"state_dict": {"model_g.<k>": ...}, ...}  (~95 MB). This same logic is
+    inlined as notebook cell 5 (function build_ckpt_from_onnx).
+
+tools/diff_intermediates.py [ckpt]
+    Taps the ONNX at enc_p / flow / dec / audio via onnxruntime (scales
+    [0,1,0]) and prints max/mean |Δ| vs the grafted torch model. THE test for
+    graft correctness. Currently all boundaries 0.0000 except tiny conv rounding.
+
+tools/verify_voice.py [ckpt]
+    Two-stage A/B render (installed inference `piper` for phonemise+ONNX audio;
+    piper1-gpl for SynthesizerTrn). WAVs to _scratch/verify/.
+
+Local env: torch 2.13.0+cpu, onnx 1.22, onnxruntime 1.26, espeak-ng at
+/usr/bin/espeak-ng. Installed `piper` (~/.local/.../python3.14) is INFERENCE
+ONLY (no piper.train) but its phonemiser works; the checkout has piper.train but
+espeakbridge isn't compiled there — hence the two-stage split in verify_voice.
+
+================================================================
+5. WHERE WE ARE  /  NEXT
+================================================================
+SOLVED (2026-09-04). The graft is bit-exact.
+
+  tools/diff_intermediates.py taps the ONNX at enc_p / flow / dec / audio
+  (onnxruntime, scales=[0,1,0]) and compares to the grafted torch model:
+      enc_p.x / m_p / logs_p   max|Δ| 0.0000
+      flow.out                 max|Δ| 0.0001
+      dec.conv_pre / ups.0     max|Δ| 0.0002 / 0.0000
+      audio                    max|Δ| 0.0000
+  Deterministic .ckpt vs .onnx audio: max sample diff ~4e-5 (float rounding).
+  outputs/det_ckpt_*.wav == outputs/det_onnx_*.wav by ear.
+
+ROOT CAUSE of the earlier "total noise": the 32 flow weight-norm convs were
+routed by graph order. The exporter traces the residual-coupling flow in
+REVERSE (flows.6 before flows.0), so flows.6's weights landed in flows.0's
+slots (and 4<->2). enc_p/dec were fine because they trace forward. Fix:
+build_ckpt_from_onnx.py now reads the destination param from the ONNX node
+name (`/flow/flows.6/enc/in_layers.0/Conv` -> `flow.flows.6.enc.in_layers.0`),
+zero order assumptions. The circular self-check that hid this before is gone.
+
+Also fixed earlier same session: dp.flows.0.logs was `-log(onnx::Exp_*)`;
+correct is `-onnx::Exp_*` (the initializer IS -logs, feeding an Exp node).
+
+NEXT STEPS (in order):
+  1. Confirm outputs/ckpt_v2_*.wav sounds clean+female to the user (expected:
+     yes — it's bit-identical to the ONNX internally).
+  2. Wire into the notebook: cell 5/12 currently hard-errors if
+     /content/aegis-female.ckpt is missing. Replace with: if missing, build it
+     from /content/aegis.onnx using tools/build_ckpt_from_onnx.py's logic
+     (inline it as a cell; point PIPER_SRC at /content/piper1-gpl/src). Keep
+     cell 5b (the listen gate) as-is.
+  3. enc_q + discriminator + dp.post_* + dp.flows.1 are still fresh-init in the
+     ckpt (fine to LOAD and to listen; they're training-only). For the LoRA run
+     the base is frozen and only text-encoder adapters train, so a fresh disc
+     matters less — but if GAN training misbehaves, graft model_d + enc_q from
+     the public Fasih ckpt (see section 3) and keep LR <= 1e-4, listen early.
+  4. Run the notebook end to end: Colab T4, Run all, ~30-45 min, LoRA train,
+     A/B (PLAIN L1 ~0, LOAN moves), merge, export v2 ONNX. Diff the exported
+     .onnx.json phoneme_id_map against the current one — MUST be byte-identical.
+  5. Ship v2 .onnx + .onnx.json into the app repo models/piper/ur-aegis-female/
+     (keep v1 for rollback).
+
+SECONDARY / NOT STARTED:
+  - Native review of the 123 Urdu sentences in dataset/metadata.csv.
+  - Spot-listen the dataset WAVs: does the Uplift AI `helpdesk-agent` voice
+    actually pronounce the loanwords CORRECTLY? The adapter learns from them.
+  - finetuning_brief.txt section 5 still lists the old finetune/ path tree from
+    before the repo split — stale, fix when convenient.
+
+================================================================
+6. GIT / ATTRIBUTION
+================================================================
+branch master (main is the PR target). Untracked: ur-aegis-female/ (the ONNX),
+outputs/ (gitignored), tools/, prompt.txt.
+Commit trailer for this work:
+  Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+  Claude-Session: https://claude.ai/code/session_01P7TLvmBgZLaa8qNoVMdTmH

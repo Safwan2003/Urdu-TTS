@@ -51,9 +51,26 @@ Lineage: hi_IN/rohan -> Fasih ur_PK-male (IhorShevchuk, ckpt published)
 -> Aegis (Muhammad Mahwiz Khalil / Proxima AI, female fine-tune of Fasih,
 MIT + attribution required).
 
-The Aegis student .ckpt goes at /content/aegis-female.ckpt in Colab
-(cell 5 validates it, cell 5b plays it). No fallback: the notebook stops
-if it is missing.
+No Aegis .ckpt is published (ONNX only). Cell 5 of the notebook rebuilds a
+trainable .ckpt from the ONNX: it grafts every weight (enc_p text encoder,
+sdp duration predictor, residual-coupling flow, HiFi-GAN vocoder) onto a fresh
+piper1-gpl generator. Verified BIT-EXACT vs the ONNX end to end
+(tools/diff_intermediates.py: audio max|delta| 0.0000 at zero noise).
+
+Gotcha that cost a day: the exporter traces the coupling flow in REVERSE, so
+the weight-norm-folded onnx::Conv_* tensors for the flow appear flows.6,
+flows.4, flows.2, flows.0 in the graph. Route them by ONNX node NAME, not by
+order, or flows.6's weights land in flows.0's slots and the voice is pure
+noise. Also dp.flows.0.logs == -onnx::Exp_* (the initializer is -logs, feeding
+an Exp node), NOT -log(onnx::Exp_*).
+
+enc_q + discriminator + dp.post_* + dp.flows.1 are training-only, absent from
+the ONNX, left at fresh init. Fine to load/listen; if GAN training misbehaves,
+graft them from the public Fasih ckpt (rhasspy/piper-checkpoints) at LR <= 1e-4.
+
+Cell 5b plays the rebuilt voice — must be clean, natural, female before you
+train. If you have a real Aegis .ckpt, drop it at /content/aegis-female.ckpt
+and cell 5 uses it as-is.
 
 ================================================================
 3. DATASET (the only remaining gap)
@@ -86,27 +103,25 @@ phoneme_id_map is byte-identical (adapt_speech_text + [[..]] depend on it).
 ================================================================
 5. FILES
 ================================================================
-finetune/
-  finetune_low_rank_adaptation_colab.ipynb   the Colab pipeline
-  run_colab.sh                               one-shot
-  base/build_ckpt_from_onnx.py               Aegis ONNX -> trainable ckpt
-  base/onnx_weights_dump.py
-  low-rank-adaptation/
-    adapter.py        LoRAConv1d + inject / freeze / merge / scale
-    train.py          frozen base, trains only the adapters (piper Trainer)
-    merge_export.py   fold adapter into weights -> plain ckpt -> ONNX
-    verify.py         base vs adapter A/B, scale sweep
-  data/
-    build_corpus.py   -> sentences_ur.txt   (NEEDS NATIVE REVIEW)
-    sentences_ur.txt
-    coverage_check.py per-loanword utterance count + espeak IPA
-    make_dataset.py   sentences -> LJSpeech via elevenlabs / azure / recorded
+finetune_low_rank_adaptation_colab.ipynb   the whole pipeline (Colab, Run all)
+dataset/                                    123 loanword clips + metadata.csv
+tools/
+  build_ckpt_from_onnx.py   Aegis ONNX -> trainable .ckpt (inlined as cell 5)
+  diff_intermediates.py     tap the ONNX layer by layer, prove the graft exact
+  verify_voice.py           A/B render ckpt vs ONNX
+prompt.txt                                  resume/context doc
+ur-aegis-female/                            the base ONNX + json (untracked)
+
+Everything else (adapter, training, merge, export, A/B) is inline in the
+notebook. No local install; data prep is `zip -r dataset.zip metadata.csv wav`.
 
 ================================================================
-6. RUN (GPU box / Colab)
+6. RUN (Colab T4)
 ================================================================
-  bash finetune/run_colab.sh          # deps, graft, dataset, adapter, merge, export
-Env: DATASET_DIR=... or ELEVENLABS_API_KEY+ELEVENLABS_VOICE_ID or AZURE_*;
-     RANK=8 ALPHA=8 LR=2e-4 MAX_STEPS=1500
-Output: ur_PK-aegis_female-medium.onnx(.json) v2 + verify_pre/ verify_post/.
+Open the notebook, Runtime -> GPU (T4), upload dataset.zip, Run all (~30-45 min).
+Cell 5 rebuilds the base ckpt from the ONNX; cell 5b plays it (must be clean
+female); cells 6-8 train the LoRA adapters on the frozen base; cell 9 merges +
+exports; cell 10 is the final listen + download.
+Output: ur_PK-aegis_female-medium.onnx(.json) v2.
 Ship: drop into models/piper/ur-aegis-female/ as v2, keep v1 for rollback.
+The exported .onnx.json phoneme_id_map MUST stay byte-identical to v1.
