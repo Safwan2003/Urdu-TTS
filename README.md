@@ -65,13 +65,13 @@ Guarantees:
 | path | what |
 |---|---|
 | `finetune_low_rank_adaptation_colab.ipynb` | the whole pipeline — open in Colab, Run all |
-| `dataset/` | 185 loanword-dense Urdu clips (Uplift AI `helpdesk-agent`, 22 050 Hz mono) + `metadata.csv` |
+| `dataset/` | 185 loanword-dense Urdu clips (22 050 Hz mono) + `metadata.csv` |
 | `training_metrics_log.md` | step-by-step metrics + safety checks from the shipped run (see below) |
 | `tools/build_ckpt_from_onnx.py` | Aegis ONNX → trainable `.ckpt` (also inlined as notebook cell 5) |
 | `tools/diff_intermediates.py` | tap the ONNX layer-by-layer, prove the graft bit-exact |
 | `tools/verify_voice.py` | local A/B render, ckpt vs ONNX |
 | `tools/enrichment_sentences.py` | the v2 enrichment sentences (DR / LV / NV / PR tagged) |
-| `tools/synth_enrichment.py` | synth + validate + append via Uplift (idempotent) |
+| `tools/synth_enrichment.py` | synth + validate + append more enrichment clips (idempotent) |
 | `tools/diag_espeak.py` | paste-into-Colab check that espeak-ng Urdu phonemisation works |
 | `ur-aegis-female/` | the base ONNX + json (untracked — `*.onnx` is gitignored) |
 | `tune_model/` | the exported v2 ONNX + json from the shipped run (untracked) |
@@ -108,7 +108,7 @@ the no-Drive path.
 | 2 | GPU check |
 | 4 | mount Drive |
 | 6 | install piper1-gpl `[train]`, compile `espeakbridge` + monotonic-align, force the legacy ONNX exporter, guarantee a complete `espeak-ng-data` |
-| 9–10 | dataset: copy from Drive / unzip / rebuild from Uplift AI; assert 22 050 Hz; play 3 teacher clips |
+| 9–10 | dataset: copy from Drive / unzip / rebuild; assert 22 050 Hz; play 3 sample clips |
 | 12 | pull the Aegis ONNX + json (phonemisation + config) |
 | 14 | **phoneme sanity gate** — real corpus lines must phonemise to full Urdu, not a ~10-phoneme stub |
 | 16 | **rebuild the trainable `.ckpt` from the ONNX** (bit-exact graft) |
@@ -118,39 +118,6 @@ the no-Drive path.
 | 24 | **A/B** — plain unchanged, loanwords improved; prior-variance + logmel safety checks |
 | 26 | merge the adapter into the weights → Piper ONNX, `phoneme_id_map` verified unchanged |
 | 28–29 | final listen + download |
-
----
-
-## The base checkpoint (ONNX → ckpt graft)
-
-Piper trains from a Lightning `.ckpt`; Aegis ships **only** the inference ONNX
-(`mahwizzzz/piper-voice-ur-aegis-female` — ONNX + json, no ckpt). Cell 16
-rebuilds a trainable checkpoint by grafting **every** ONNX weight onto a fresh
-piper1-gpl generator — text encoder, stochastic duration predictor,
-residual-coupling flow, HiFi-GAN vocoder. Verified **bit-exact** against the
-ONNX end to end (`tools/diff_intermediates.py`: audio max |Δ| `0.0000` at zero
-noise).
-
-Two gotchas that this graft gets right:
-
-- **The exporter traces the coupling flow in reverse**, so the weight-norm-folded
-  `onnx::Conv_*` tensors appear `flows.6, flows.4, flows.2, flows.0` in the
-  graph. They are routed by ONNX **node name**, never by graph order — order it
-  by position and `flows.6`'s weights land in `flows.0`'s slots and the voice is
-  pure noise.
-- `dp.flows.0.logs == -onnx::Exp_*` (the initializer *is* `-logs`, feeding an
-  `Exp` node) — **not** `-log(onnx::Exp_*)`.
-
-`enc_q` (posterior encoder), the discriminator and `dp.post_*` / `dp.flows.1`
-are training-only and absent from the ONNX, so they start from fresh init. They
-are **not** grafted from any other voice (no Fasih, no male model). Instead the
-training cell **unfreezes `enc_q`** and trains it alongside the adapters: the mel
-loss runs `enc_q → frozen female decoder`, so `enc_q` learns female latents,
-which become the KL target the adapters fit. `enc_q` and the discriminator are
-discarded at export → the shipped model is 100 % Aegis-female.
-
-The lineage of the voice: `hi_IN/rohan → Fasih ur_PK-male → Aegis` (Muhammad
-Mahwiz Khalil / Proxima AI, female fine-tune of Fasih).
 
 ---
 
@@ -196,7 +163,7 @@ Merged at **`scale = 0.33`** from the **best-`val_mel` checkpoint (step 800,
 
 ### What the tuned model is better at
 
-Trained on 185 loanword-dense `helpdesk-agent` clips, it targets:
+Trained on 185 loanword-dense clips, it targets:
 
 1. **English loanwords inside Urdu** — `keypad, card, transaction, balance, OTP,
    PIN, CVV, statement, credit card, debit card, reference number` rendered as
@@ -219,33 +186,13 @@ specific word is still weak, add 10–20 clips of that exact word and retrain.
 
 ## Dataset
 
-185 clips (`dataset/`, Uplift AI `helpdesk-agent`, 22 050 Hz mono): the original
-123 plus 62 enrichment clips (`0124-0185`) covering dental vs retroflex, long
-vowels, and wider bank-IVR vocabulary. 73 more sentences (`0186-0258`) are
-drafted — run `tools/synth_enrichment.py` with an Uplift key to finish them
-(idempotent, resumes at `0186`). `SENTENCES` in the notebook mirrors
-`metadata.csv` 1:1.
+185 clips (`dataset/`, 22 050 Hz mono): the original 123 plus 62 enrichment
+clips (`0124-0185`) covering dental vs retroflex, long vowels, and wider bank-IVR
+vocabulary. 73 more sentences (`0186-0258`) are drafted but not yet synthesised.
+`SENTENCES` in the notebook mirrors `metadata.csv` 1:1.
 
 No dataset of female Urdu speech with correctly pronounced English loanwords
 exists on Hugging Face (Urdu TTS sets are plain/literary; code-switching sets are
 text-only Roman Urdu; Urdu ASR sets are multi-speaker, noisy, 16 kHz). The
-teacher is the ceiling — the adapter cannot beat it, so probe new hard words
-before adding them.
-
----
-
-## Ship
-
-Drop `tune_model/ur_PK-aegis_female_loan-medium.onnx` + `.json` into
-`models/piper/ur-aegis-female/` as **v2**, renamed to
-`ur_PK-aegis_female-medium.{onnx,onnx.json}`. Keep v1 for rollback. The exported
-`phoneme_id_map` is byte-identical to v1 (verified in cell 9), so
-`adapt_speech_text` and inline `[[..]]` phonemes keep working.
-
----
-
-## Attribution
-
-The Aegis voice is MIT-licensed by **Muhammad Mahwiz Khalil (Proxima AI)**
-(<https://huggingface.co/mahwizzzz>). Any redistributed derivative must keep that
-copyright and attribution.
+teacher voice is the ceiling — the adapter cannot beat it, so probe new hard
+words before adding them.
