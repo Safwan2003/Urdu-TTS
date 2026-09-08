@@ -78,20 +78,25 @@ it cannot drift; if cell 5b is noisy the cause is stale /content state from an
 earlier run (use Runtime > Disconnect and delete runtime).
 
 ================================================================
-3. DATASET (the only remaining gap)
+3. DATASET
 ================================================================
+STATUS 2026-09-08: 185 clips in hand (dataset/, Uplift AI `helpdesk-agent`,
+22 050 Hz mono). The original 123 + 62 enrichment clips (0124-0185) covering
+dental ت/د vs retroflex ٹ/ڈ, long vowels (iː aː eː oː), and wider bank-IVR
+vocabulary. Text + espeak-ng IPA in tools/enrichment_sentences.py and
+dataset/enrichment_espeak_review.txt. 73 more sentences (0186-0258) are
+drafted; run tools/synth_enrichment.py with an Uplift key to finish them
+(idempotent, resumes at 0186). SENTENCES in the notebook mirrors
+metadata.csv 1:1.
+
 Searched HF thoroughly — NO dataset of female Urdu speech with correctly
 pronounced English loanwords exists:
   - Urdu TTS sets (mahwizzzz/UAT, HamzaSidhu...) = plain/literary Urdu
   - code-switching sets (codesaviours x12...)   = TEXT only, Roman Urdu
   - Urdu ASR sets (ASLP-lab/UrduSpeech, CV, ...) = multi-speaker, noisy, 16k
 
-So ~120-250 clips must be made:
-  - RECORD a female PK-Urdu speaker reading data/sentences_ur.txt
-    (~15 min; keeps a real owned voice) — best
-  - ElevenLabs multilingual, voice cloned from
-    src/sdr_agent/assets/female_voice_urdu.wav -> stays Aegis-like (paid)
-  - Azure ur-PK-UzmaNeural (free tier; fixed voice, not Aegis)
+Target was ~120-250 clips; the set is built with Uplift AI `helpdesk-agent`
+(the teacher — the adapter cannot beat it, so probe new hard words first).
 Because the base is frozen, NO plain-Urdu padding is needed — the corpus
 is purely loanword phrases.
 
@@ -109,9 +114,12 @@ phoneme_id_map is byte-identical (adapt_speech_text + [[..]] depend on it).
 5. FILES
 ================================================================
 finetune_low_rank_adaptation_colab.ipynb   the whole pipeline (Colab, Run all)
-dataset/                                    123 loanword clips + metadata.csv
+dataset/                                    185 loanword clips + metadata.csv
+                                            + enrichment_espeak_review.txt
 tools/
   build_ckpt_from_onnx.py   Aegis ONNX -> trainable .ckpt (inlined as cell 5)
+  enrichment_sentences.py   the 135 v2 sentences (DR/LV/NV/PR tagged)
+  synth_enrichment.py       synth + validate + append via Uplift (idempotent)
   diff_intermediates.py     tap the ONNX layer by layer, prove the graft exact
   verify_voice.py           A/B render ckpt vs ONNX
 prompt.txt                                  resume/context doc

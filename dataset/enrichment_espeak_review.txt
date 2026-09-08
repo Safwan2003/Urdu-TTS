@@ -1,0 +1,437 @@
+total new: 135  by category: {'DR': 26, 'LV': 26, 'NV': 44, 'PR': 39}
+
+0124 [DR] آپ کی درخواست کی تاریخ اور ٹرانزیکشن کی تفصیل ریکارڈ کر لی گئی ہے۔
+        ˌaːp ki dˌarxʋˈaːst ki taːrˈiːx ɔr ʈrˌaːnzˈeːkʃan ki tˌəfʂˈiːl reːkˈaːrɖ kar lˈiː ɡˈai hɛ
+
+0125 [DR] براہِ کرم درست تاریخِ پیدائش درج کریں تاکہ ویریفیکیشن مکمل ہو سکے۔
+        bˌəraːhˈeː kˈʌrəm dˈʊrʊst tˌaːrixˈeː peːdˈaɪʃ dˈarɟ kˈʌrẽː tˈaːkeːh ʋˌeːrifˌiːkeːʃˈan mʊkˈammal hˈoː sˈʌkeː
+
+0126 [DR] آپ کے کریڈٹ کارڈ کی ادائیگی کی آخری تاریخ اکتیس مارچ ہے۔
+        ˌaːp keː krˈeːɖɪʈ kˈaːrɖ ki ˌadaːˈiːɡi ki ˈaːxrˌiː taːrˈiːx ˌaktˈiːs mˈaːrc hɛ
+
+0127 [DR] دستیاب رقم اور کریڈٹ لمٹ کی تفصیل اسکرین پر موجود ہے۔
+        dˌəstjˈaːb rˈʌqəm ɔr krˈeːɖɪʈ lˈʌməʈ ki tˌəfʂˈiːl ˌasəkrˈiːn pˈʌr moːɟˈuːd hɛ
+
+0128 [DR] تصدیق کے بعد آپ کا ڈیبٹ کارڈ ایکٹیویٹ کر دیا جائے گا۔
+        tˌəʂdˈiːq keː bˈaːd ˌaːp kaː ɖˈeːbəʈ kˈaːrɖ ˌeːkʈeːʋˈiːʈ kar dˈiːaː ɟˈaːeː ɡaː
+
+0129 [DR] توثیق مکمل ہونے پر آپ کی ٹرانسفر کی درخواست پراسیس ہو جائے گی۔
+        toːsˈiːq mʊkˈammal hˈoːneː pˈʌr ˌaːp ki ʈrˈaːnsəfˌər ki dˌarxʋˈaːst pˌəraːsˈiːs hˈoː ɟˈaːeː ɡi
+
+0130 [DR] آپ کے اکاؤنٹ کی تفصیل میں پتہ اور تاریخِ پیدائش دونوں اپڈیٹ ہو گئے ہیں۔
+        ˌaːp keː ˌakaːˈuːnʈ ki tˌəfʂˈiːl mˈẽ pˈʌta ɔr tˌaːrixˈeː peːdˈaɪʃ dˈoːnõː ˌapɖˈiːʈ hˈoː ɡˈaeː hẽ
+
+0131 [DR] درج کردہ ٹرانزیکشن آئی ڈی کی مدت ختم ہو چکی ہے، نئی درخواست دیں۔
+        dˈarɟ kˈʌrdˌa ʈrˌaːnzˈeːkʃan ˈaːi ɖˈiː ki mʊdˈat xˈatm hˈoː cʊkˈiː hɛ
+nˈʌi dˌarxʋˈaːst dˈẽ
+
+0132 [DR] آپ کی اسٹیٹمنٹ کی مدت یکم تا تیس دن مقرر کی گئی ہے۔
+        ˌaːp ki ɪsʈˈiːʈəmˌənʈ ki mʊdˈat jˈakʊm tˈaː tˈiːs dˈɪn mˌʊqarˈar ki ɡˈai hɛ
+
+0133 [DR] دفتری اوقات میں آپ کی کمپلینٹ کا تدارک کر دیا جائے گا۔
+        dˈʌfətri ˌoːqˈaːt mˈẽ ˌaːp ki kˌəmpəlˈiːnʈ kaː tadˈaːrʊk kar dˈiːaː ɟˈaːeː ɡaː
+
+0134 [DR] براہِ کرم تاخیر سے بچنے کے لیے ڈیو ڈیٹ سے پہلے ادائیگی کریں۔
+        bˌəraːhˈeː kˈʌrəm taːxˈiːr seː bˈʌcnˌeː keː lˈiːeː ɖjˈuː ɖˈeːʈ seː pˈɛhleː ˌadaːˈiːɡi kˈʌrẽː
+
+0135 [DR] آپ کے ڈیبٹ کارڈ اور کریڈٹ کارڈ کی تاریخِ اجرا ایک ہی دن ہے۔
+        ˌaːp keː ɖˈeːbəʈ kˈaːrɖ ɔr krˈeːɖɪʈ kˈaːrɖ ki tˌaːrixˈeː ˈɪɟraː ˈeːk hˈiː dˈɪn hɛ
+
+0136 [DR] تناسب کے مطابق مارک اپ آپ کی اگلی اسٹیٹمنٹ میں درج ہو گا۔
+        tanˈaːsʊb keː mʊtˈaːbɪq mˈaːrk ˈap ˌaːp ki ˈaɡlˌiː ɪsʈˈiːʈəmˌənʈ mˈẽ dˈarɟ hˈoː ɡaː
+
+0137 [DR] توثیقی کوڈ درج کریں، یہ کوڈ صرف دو منٹ کے لیے درست رہے گا۔
+        toːsˈiːqi kˈoːɖ dˈarɟ kˈʌrẽː
+jeːh kˈoːɖ ʂˈɪrf dˈoː mˈɪnɪʈ keː lˈiːeː dˈʊrʊst rˈʌheː ɡaː
+
+0138 [DR] آپ کے اعتماد کا شکریہ، آپ کا ٹرانزیکشن محفوظ طریقے سے مکمل ہوا۔
+        ˌaːp keː ˈeːtɪmˌaːd kaː ʃʊkrˈiːa
+ˌaːp kaː ʈrˌaːnzˈeːkʃan mˌeːhfˈuːʐ tərˈiːqeː seː mʊkˈammal hˈuːaː
+
+0139 [DR] درخواست کی تصدیق کے بعد نیا اے ٹی ایم کارڈ متعلقہ برانچ بھیج دیا جائے گا۔
+        dˌarxʋˈaːst ki tˌəʂdˈiːq keː bˈaːd nˈajaː ˈeː ʈˈiː ˈeːm kˈaːrɖ mʊtˈaːlɪqˌa bərˈaːnc bʰˈeːɟ dˈiːaː ɟˈaːeː ɡaː
+
+0140 [DR] آپ کی ادائیگی کی درست تاریخ اور ٹرانزیکشن کی رقم دونوں ریکارڈ پر ہیں۔
+        ˌaːp ki ˌadaːˈiːɡi ki dˈʊrʊst taːrˈiːx ɔr ʈrˌaːnzˈeːkʃan ki rˈʌqəm dˈoːnõː reːkˈaːrɖ pˈʌr hẽ
+
+0141 [DR] تفصیلی اسٹیٹمنٹ کے لیے تاریخوں کی حد درج کریں۔
+        tˌəfʂˈiːli ɪsʈˈiːʈəmˌənʈ keː lˈiːeː taːrˈiːxõː ki hˈʌd dˈarɟ kˈʌrẽː
+
+0142 [DR] براہِ کرم اپنی درج کردہ ای میل کی توثیق کریں تاکہ نوٹیفیکیشن موصول ہوں۔
+        bˌəraːhˈeː kˈʌrəm ˈapnˌiː dˈarɟ kˈʌrdˌa ˈiː mˈeːl ki toːsˈiːq kˈʌrẽː tˈaːkeːh nˌoːʈifˌiːkeːʃˈan moːʂˈoːl huːn
+
+0143 [DR] کارڈ کی تبدیلی کے بعد اسٹینڈنگ انسٹرکشن خودبخود منتقل ہو جائے گی۔
+        kˈaːrɖ ki tˌəbdˈiːli keː bˈaːd ɪsʈˈeːnɖɪnɡ ˈɪnsʈərˌəkəʃˌən xˈʊdbəxˌoːd mˌʊntˈaqɪl hˈoː ɟˈaːeː ɡi
+
+0144 [LV] براہِ کرم اپنے کی پیڈ پر چار ہندسوں کا پاس کوڈ درج کریں۔
+        bˌəraːhˈeː kˈʌrəm ˈapnˌeː ki pˈeːɖ pˈʌr cˈaːr hˈɪndəsˌõː kaː pˈaːs kˈoːɖ dˈarɟ kˈʌrẽː
+
+0145 [LV] آپ کی درج کردہ ای میل پر ایک تصدیقی لنک بھیج دیا گیا ہے۔
+        ˌaːp ki dˈarɟ kˈʌrdˌa ˈiː mˈeːl pˈʌr ˈeːk tˌəʂdˈiːqi lˈɪnk bʰˈeːɟ dˈiːaː ɡˌajaː hɛ
+
+0146 [LV] آپ کے اسکرین پر دی گئی ریفرنس نمبر نوٹ کر لیں۔
+        ˌaːp keː ˌasəkrˈiːn pˈʌr dˈiː ɡˈai rˌeːfərˈʌns nˈʌmbər nˈoːʈ kar lˈẽ
+
+0147 [LV] آج مارکیٹ ریٹ کے مطابق آپ کے اکاؤنٹ میں رقم منتقل ہو گئی ہے۔
+        ˈaːɟ mˌaːrkˈiːʈ rˈeːʈ keː mʊtˈaːbɪq ˌaːp keː ˌakaːˈuːnʈ mˈẽ rˈʌqəm mˌʊntˈaqɪl hˈoː ɡˈai hɛ
+
+0148 [LV] آپ کے کارڈ پر لاگو سالانہ چارج پانچ ہزار روپے ہے۔
+        ˌaːp keː kˈaːrɖ pˈʌr lˈaːɡoː saːlˈaːnˌa cˈaːrɟ pˈaːnc həzˈaːr rˈʊpeː hɛ
+
+0149 [LV] پیمنٹ گیٹ وے سے جواب موصول ہونے تک براہِ کرم انتظار کریں۔
+        pˈeːmənʈ ɡˈeːʈ ʋˈeː seː ɟˈaʋaːb moːʂˈoːl hˈoːneː tˈʌk bˌəraːhˈeː kˈʌrəm ˌɪntɪʐˈaːr kˈʌrẽː
+
+0150 [LV] آپ کا کریڈٹ کارڈ بیلنس اور کم از کم ادائیگی اسکرین پر موجود ہے۔
+        ˌaːp kaː krˈeːɖɪʈ kˈaːrɖ beːlˈʌns ɔr kˈʌm ˈaz kˈʌm ˌadaːˈiːɡi ˌasəkrˈiːn pˈʌr moːɟˈuːd hɛ
+
+0151 [LV] نیا کوڈ حاصل کرنے کے لیے دوبارہ ری سینڈ کا بٹن دبائیں۔
+        nˈajaː kˈoːɖ hˈaːʂɪl kˌarneː keː lˈiːeː doːbˈaːrˌa rˈiː sˈeːnɖ kaː bˈʌʈən dəbˈaːẽː
+
+0152 [LV] سیکیورٹی کی وجہ سے آپ کا سیشن ختم کر دیا گیا ہے، دوبارہ لاگ اِن کریں۔
+        sˌeːkeːˈoːrʈi ki ʋˈʌɟˌa seː ˌaːp kaː sˈeːʃən xˈatm kar dˈiːaː ɡˌajaː hɛ
+doːbˈaːrˌa lˈaːɡ ˈɪn kˈʌrẽː
+
+0153 [LV] آپ کی درخواست پر کارڈ کی لمٹ میں اضافہ منظور کر لیا گیا ہے۔
+        ˌaːp ki dˌarxʋˈaːst pˈʌr kˈaːrɖ ki lˈʌməʈ mˈẽ ɪzˈaːfa mˌanʐˈuːr kar lˈiːaː ɡˌajaː hɛ
+
+0154 [LV] روٹ تبدیل ہونے کی صورت میں نیا ریفرنس نمبر جاری کیا جائے گا۔
+        rˈuːʈ tˌəbdˈiːl hˈoːneː ki ʂuːrˈat mˈẽ nˈajaː rˌeːfərˈʌns nˈʌmbər ɟˈaːri kˈiːaː ɟˌaːeː ɡaː
+
+0155 [LV] مینو میں سے بیلنس انکوائری کا آپشن منتخب کریں۔
+        mˈeːnoː mˈẽ seː beːlˈʌns ɪnkʋˈaɪri kaː ˈaːpəʃˌən mˌʊntˈaxəb kˈʌrẽː
+
+0156 [LV] آپ کے پوائنٹس کی ویلیو اگلی اسٹیٹمنٹ میں کیش بیک کے طور پر ظاہر ہو گی۔
+        ˌaːp keː pˌʊaːˈɪnʈs ki ʋeːlˈeːoː ˈaɡlˌiː ɪsʈˈiːʈəmˌənʈ mˈẽ kˈeːʃ bˈeːk keː tˈɔːr pˈʌr ʐˈaːhɪr hˈoː ɡi
+
+0157 [LV] اپنے موبائل ایپ کی سیٹنگز میں جا کر نوٹیفیکیشن آن کر لیں۔
+        ˈapnˌeː moːbˈaɪl ˈeːp ki seːʈˈɪnɡz mˈẽ ɟˈaː kar nˌoːʈifˌiːkeːʃˈan ˈaːn kar lˈẽ
+
+0158 [LV] آپ کا اے ٹی ایم پن ری سیٹ کرنے کے لیے پرانا پن درج کریں۔
+        ˌaːp kaː ˈeː ʈˈiː ˈeːm pˈʌn rˈiː sˈeːʈ kˌarneː keː lˈiːeː pʊrˈaːnaː pˈʌn dˈarɟ kˈʌrẽː
+
+0159 [LV] براہِ کرم اسکرین پر دیا گیا کیو آر کوڈ اسکین کریں۔
+        bˌəraːhˈeː kˈʌrəm ˌasəkrˈiːn pˈʌr dˈiːaː ɡˌajaː kˈeːoː ˈaːr kˈoːɖ ˌaskˈiːn kˈʌrẽː
+
+0160 [LV] آپ کی درخواست موڈ تبدیل ہونے کے بعد ری اپلائی کریں۔
+        ˌaːp ki dˌarxʋˈaːst mˈoːɖ tˌəbdˈiːl hˈoːneː keː bˈaːd rˈiː ˌaplˈaːi kˈʌrẽː
+
+0161 [LV] آن لائن پورٹل پر لاگ اِن کر کے ای اسٹیٹمنٹ ڈاؤن لوڈ کریں۔
+        ˈaːn lˈaɪn pˈoːrʈəl pˈʌr lˈaːɡ ˈɪn kar keː ˈiː ɪsʈˈiːʈəmˌənʈ ɖaːˈoːn lˈoːɖ kˈʌrẽː
+
+0162 [NV] آپ کی ویریفیکیشن کامیابی سے مکمل ہو گئی ہے۔
+        ˌaːp ki ʋˌeːrifˌiːkeːʃˈan kˈaːmjaːbˌiː seː mʊkˈammal hˈoː ɡˈai hɛ
+
+0163 [NV] بایومیٹرک تصدیق کے لیے براہِ کرم اپنا انگوٹھا اسکینر پر رکھیں۔
+        bˌaːeːoːmˈiːʈərˌək tˌəʂdˈiːq keː lˈiːeː bˌəraːhˈeː kˈʌrəm ˈapnˌaː ˌanɡˈoːʈʰaː ˌaskˈiːnər pˈʌr rˈʌkʰẽː
+
+0164 [NV] آپ کے فنگر پرنٹ کا ریکارڈ سسٹم میں موجود نہیں، برانچ سے رجوع کریں۔
+        ˌaːp keː fɪnɡˈar prˈɪnʈ kaː reːkˈaːrɖ sɪsʈˈam mˈẽ moːɟˈuːd nahˈiːn
+bərˈaːnc seː rˈʊɟuː kˈʌrẽː
+
+0165 [NV] نیا بینیفیشری شامل کر دیا گیا ہے اور چوبیس گھنٹے بعد فعال ہو گا۔
+        nˈajaː bˌeːnifˈiːʃrˌiː ʃˈaːmɪl kar dˈiːaː ɡˌajaː hɛ ɔr coːbˈiːs ɡʰˈʌnʈˌeː bˈaːd fˈaːl hˈoː ɡaː
+
+0166 [NV] آپ کا ٹرانزیکشن مرچنٹ کی جانب سے ڈیکلائن کر دیا گیا ہے۔
+        ˌaːp kaː ʈrˌaːnzˈeːkʃan mˈʌrcənʈ ki ɟˈaːnɪb seː ɖˌeːklˈaɪn kar dˈiːaː ɡˌajaː hɛ
+
+0167 [NV] پی او ایس مشین پر ادائیگی منظور ہو گئی ہے۔
+        pˈiː ˈoː ˈeːs məʃˈiːn pˈʌr ˌadaːˈiːɡi mˌanʐˈuːr hˈoː ɡˈai hɛ
+
+0168 [NV] آپ کی قسط یعنی انسٹالمنٹ اکتیس تاریخ کو واجب الادا ہے۔
+        ˌaːp ki qˈɪst jˈaːni ˌɪnsɪʈˈaːləmˌənʈ ˌaktˈiːs taːrˈiːx kˈoː ʋˈaːɟɪb alˈadaː hɛ
+
+0169 [NV] اس ٹرانزیکشن پر مارک اپ کی شرح دو فیصد ماہانہ ہے۔
+        ɪs ʈrˌaːnzˈeːkʃan pˈʌr mˈaːrk ˈap ki ʃˌərˈah dˈoː fiʂˈad maːhˈaːnˌa hɛ
+
+0170 [NV] آپ کا ری فنڈ سات کاروباری دنوں میں اکاؤنٹ میں واپس آ جائے گا۔
+        ˌaːp kaː rˈiː fˈʌnɖ sˈaːt kˌaːroːbˈaːri dɪnˈoːn mˈẽ ˌakaːˈuːnʈ mˈẽ ʋˈaːpəs ˈaː ɟˈaːeː ɡaː
+
+0171 [NV] غلط ٹرانزیکشن کی ریورسل کی درخواست موصول ہو گئی ہے۔
+        ɣˈʌlət ʈrˌaːnzˈeːkʃan ki reːˈoːrəsˌəl ki dˌarxʋˈaːst moːʂˈoːl hˈoː ɡˈai hɛ
+
+0172 [NV] آپ کا ڈسپیوٹ کیس کھول دیا گیا ہے، ریفرنس نمبر محفوظ رکھیں۔
+        ˌaːp kaː ɖˌəspeːˈoːʈ kˈeːs kʰˈoːl dˈiːaː ɡˌajaː hɛ
+rˌeːfərˈʌns nˈʌmbər mˌeːhfˈuːʐ rˈʌkʰẽː
+
+0173 [NV] آپ کو ہر ٹرانزیکشن پر ایس ایم ایس الرٹ اور ایپ نوٹیفیکیشن موصول ہوں گے۔
+        ˌaːp kˈoː hˈʌr ʈrˌaːnzˈeːkʃan pˈʌr ˈeːs ˈeːm ˈeːs alˈʌrʈ ɔr ˈeːp nˌoːʈifˌiːkeːʃˈan moːʂˈoːl hˈõː ɡeː
+
+0174 [NV] منی اسٹیٹمنٹ میں صرف آخری دس ٹرانزیکشنز دکھائی جاتی ہیں۔
+        mˈʌni ɪsʈˈiːʈəmˌənʈ mˈẽ ʂˈɪrf ˈaːxrˌiː dˈʌs ʈrˌaːnzeːkʃˈanz dɪkʰˈaːi ɟˈaːti hẽ
+
+0175 [NV] آپ کا کارڈ عارضی طور پر ہولڈ پر رکھ دیا گیا ہے۔
+        ˌaːp kaː kˈaːrɖ ˈaːrzˌiː tˈɔːr pˈʌr hˈoːlɖ pˈʌr rˈʌkʰ dˈiːaː ɡˌajaː hɛ
+
+0176 [NV] کارڈ دوبارہ چالو یعنی ری ایکٹیویٹ کرنے کے لیے تصدیقی کوڈ درج کریں۔
+        kˈaːrɖ doːbˈaːrˌa cˈaːloː jˈaːni rˈiː ˌeːkʈeːʋˈiːʈ kˌarneː keː lˈiːeː tˌəʂdˈiːqi kˈoːɖ dˈarɟ kˈʌrẽː
+
+0177 [NV] آٹو ڈیبٹ کی سہولت آپ کے اکاؤنٹ پر فعال کر دی گئی ہے۔
+        ˈaːʈoː ɖˈeːbəʈ ki sˌahuːlˈat ˌaːp keː ˌakaːˈuːnʈ pˈʌr fˈaːl kar dˈiː ɡˈai hɛ
+
+0178 [NV] آپ کی اسٹینڈنگ انسٹرکشن ہر مہینے کی پہلی تاریخ کو عمل میں آئے گی۔
+        ˌaːp ki ɪsʈˈeːnɖɪnɡ ˈɪnsʈərˌəkəʃˌən hˈʌr məhˈiːneː ki pˈɛhli taːrˈiːx kˈoː ˈaməl mˈẽ ˈaːeː ɡi
+
+0179 [NV] ادائیگی کی تصدیق یعنی کنفرمیشن آپ کے موبائل پر بھیج دی گئی ہے۔
+        ˌadaːˈiːɡi ki tˌəʂdˈiːq jˈaːni kˌənəfˌərmeːʃˈan ˌaːp keː moːbˈaɪl pˈʌr bʰˈeːɟ dˈiː ɡˈai hɛ
+
+0180 [NV] درخواست منسوخ کرنے کے لیے کینسل کا بٹن دبائیں۔
+        dˌarxʋˈaːst mənsˈuːx kˌarneː keː lˈiːeː kˈeːnsəl kaː bˈʌʈən dəbˈaːẽː
+
+0181 [NV] فارم مکمل کرنے کے بعد سبمٹ کا بٹن دبائیں۔
+        fˈaːrm mʊkˈammal kˌarneː keː bˈaːd sˈʌbəmˌəʈ kaː bˈʌʈən dəbˈaːẽː
+
+0182 [NV] آپ کی لاگ اِن کوشش ناکام رہی، براہِ کرم ری ٹرائی کریں۔
+        ˌaːp ki lˈaːɡ ˈɪn kˈoːʃɪʃ naːkˈaːm rˈʌhi
+bˌəraːhˈeː kˈʌrəm rˈiː ʈrˈaːi kˈʌrẽː
+
+0183 [NV] سیشن ٹائم آؤٹ ہونے پر آپ کو دوبارہ لاگ اِن کرنا ہو گا۔
+        sˈeːʃən ʈˈaɪm aːˈoːʈ hˈoːneː pˈʌr ˌaːp kˈoː doːbˈaːrˌa lˈaːɡ ˈɪn kˌarnaː hˈoː ɡaː
+
+0184 [NV] آپ کا ورچوئل کارڈ فوری طور پر جاری کر دیا گیا ہے۔
+        ˌaːp kaː ʋərcˈoːl kˈaːrɖ fˈoːri tˈɔːr pˈʌr ɟˈaːri kar dˈiːaː ɡˌajaː hɛ
+
+0185 [NV] فزیکل کارڈ آپ کے رجسٹرڈ پتے پر دس دن میں پہنچ جائے گا۔
+        fəzˈiːkəl kˈaːrɖ ˌaːp keː rˌɪɟɪsʈˈarɖ pˈʌteː pˈʌr dˈʌs dˈɪn mˈẽ pahˈʊnc ɟˈaːeː ɡaː
+
+0186 [NV] کارڈ کی ایکسپائری ڈیٹ آپ کے اسٹیٹمنٹ کے اوپر درج ہوتی ہے۔
+        kˈaːrɖ ki ˌeːkəspˈaɪri ɖˈeːʈ ˌaːp keː ɪsʈˈiːʈəmˌənʈ keː ˈuːpar dˈarɟ hˈoːti hɛ
+
+0187 [NV] آپ کی پرافائل کی معلومات کامیابی سے محفوظ ہو گئی ہیں۔
+        ˌaːp ki pˌəraːfˈaɪl ki mˈaːluːmaːt kˈaːmjaːbˌiː seː mˌeːhfˈuːʐ hˈoː ɡˈai hẽ
+
+0188 [NV] ہماری ہیلپ لائن چوبیس گھنٹے دستیاب ہے۔
+        həmˈaːri hˈɛlp lˈaɪn coːbˈiːs ɡʰˈʌnʈˌeː dˌəstjˈaːb hɛ
+
+0189 [NV] کسٹمر سروس کے نمائندے سے بات کرنے کے لیے صفر دبائیں۔
+        kˈʌsʈəmˌər sˈarʋɪs keː nˈʊmaːndˌeː seː bˈaːt kˌarneː keː lˈiːeː ʂɪfˈar dəbˈaːẽː
+
+0190 [NV] آپ کی ادائیگی اپروو ہو گئی ہے اور رسید بھیج دی گئی ہے۔
+        ˌaːp ki ˌadaːˈiːɡi apˈʌrʋoː hˈoː ɡˈai hɛ ɔr rəsˈiːd bʰˈeːɟ dˈiː ɡˈai hɛ
+
+0191 [NV] آپ کا اکاؤنٹ عارضی طور پر ڈی ایکٹیویٹ کر دیا گیا ہے۔
+        ˌaːp kaː ˌakaːˈuːnʈ ˈaːrzˌiː tˈɔːr pˈʌr ɖˈiː ˌeːkʈeːʋˈiːʈ kar dˈiːaː ɡˌajaː hɛ
+
+0192 [NV] بلنگ سائیکل کے اختتام پر آپ کی نئی اسٹیٹمنٹ تیار ہو گی۔
+        bˈʌlənɡ saːˈiːkəl keː ˌɪxtɪtˈaːm pˈʌr ˌaːp ki nˈʌi ɪsʈˈiːʈəmˌənʈ tˌaiˈaːr hˈoː ɡi
+
+0193 [NV] آپ کی درخواست کیو آر کوڈ کے ذریعے تصدیق کے لیے تیار ہے۔
+        ˌaːp ki dˌarxʋˈaːst kˈeːoː ˈaːr kˈoːɖ keː zarˈiːeː tˌəʂdˈiːq keː lˈiːeː tˌaiˈaːr hɛ
+
+0194 [PR] کیا آپ اپنے کریڈٹ کارڈ کی دستیاب لمٹ جاننا چاہتے ہیں؟
+        kjˈaː ˌaːp ˈapnˌeː krˈeːɖɪʈ kˈaːrɖ ki dˌəstjˈaːb lˈʌməʈ ɟˈaːnnˌaː cˈaːhteː hẽ
+
+0195 [PR] اگر یہ ٹرانزیکشن آپ نے نہیں کی تو ابھی ایک دبائیں، ورنہ دو دبائیں۔
+        aɡˈar jeːh ʈrˌaːnzˈeːkʃan ˌaːp neː nahˈiːn ki tˈoː ˈabʰi ˈeːk dəbˈaːẽː
+ʋˈarna dˈoː dəbˈaːẽː
+
+0196 [PR] آپ کا بیلنس کم ہے؛ کیا آپ منی ٹرانسفر کرنا چاہیں گے؟
+        ˌaːp kaː beːlˈʌns kˈʌm hɛ
+kjˈaː ˌaːp mˈʌni ʈrˈaːnsəfˌər kˌarnaː cˈaːhẽː ɡeː
+
+0197 [PR] براہِ کرم بتائیں کہ آپ ڈیبٹ کارڈ بلاک کرنا چاہتے ہیں یا کریڈٹ کارڈ؟
+        bˌəraːhˈeː kˈʌrəm bətˈaːẽː ke ˌaːp ɖˈeːbəʈ kˈaːrɖ bəlˈaːk kˌarnaː cˈaːhteː hẽ jˈaː krˈeːɖɪʈ kˈaːrɖ
+
+0198 [PR] کیا آپ چاہتے ہیں کہ ری فنڈ اسی کارڈ پر بھیجا جائے جس پر ادائیگی ہوئی تھی؟
+        kjˈaː ˌaːp cˈaːhteː hẽ ke rˈiː fˈʌnɖ ˈɪsi kˈaːrɖ pˈʌr bʰˈeːɟaː ɟˈaːeː ɟɪs pˈʌr ˌadaːˈiːɡi hˈuːi tʰi
+
+0199 [PR] ٹرانزیکشن مکمل کرنے سے پہلے آپ کے موبائل پر بھیجا گیا او ٹی پی درج کریں۔
+        ʈrˌaːnzˈeːkʃan mʊkˈammal kˌarneː seː pˈɛhleː ˌaːp keː moːbˈaɪl pˈʌr bʰˈeːɟaː ɡˌajaː ˈoː ʈˈiː pˈiː dˈarɟ kˈʌrẽː
+
+0200 [PR] بینیفیشری شامل کرنے کے بعد پہلا ٹرانسفر پچاس ہزار روپے تک محدود رہے گا۔
+        bˌeːnifˈiːʃrˌiː ʃˈaːmɪl kˌarneː keː bˈaːd pˈɛhlaː ʈrˈaːnsəfˌər pəcˈaːs həzˈaːr rˈʊpeː tˈʌk mˌɛhdˈuːd rˈʌheː ɡaː
+
+0201 [PR] آپ کی اسٹیٹمنٹ ای میل پر بھیج دی گئی ہے اور ایپ میں بھی دستیاب ہے۔
+        ˌaːp ki ɪsʈˈiːʈəmˌənʈ ˈiː mˈeːl pˈʌr bʰˈeːɟ dˈiː ɡˈai hɛ ɔr ˈeːp mˈẽ bʰˈiː dˌəstjˈaːb hɛ
+
+0202 [PR] اگر آپ کا کارڈ گم ہو گیا ہے تو پہلے اسے بلاک کریں پھر نیا کارڈ منگوائیں۔
+        aɡˈar ˌaːp kaː kˈaːrɖ ɡˈʊm hˈoː ɡˌajaː hɛ tˈoː pˈɛhleː ˌɪseː bəlˈaːk kˈʌrẽː phˈɪr nˈajaː kˈaːrɖ mˌənɡʋˈaːẽː
+
+0203 [PR] ویریفیکیشن کے لیے آپ کو ایک کال آئے گی؛ کال کے دوران کوئی کوڈ کسی کو نہ بتائیں۔
+        ʋˌeːrifˌiːkeːʃˈan keː lˈiːeː ˌaːp kˈoː ˈeːk kˈaːl ˈaːeː ɡi
+kˈaːl keː doːrˈaːn kˈoːi kˈoːɖ kˈɪsi kˈoː nˈa bətˈaːẽː
+
+0204 [PR] آپ کے اکاؤنٹ سے ایک مشکوک ٹرانزیکشن روکی گئی ہے، براہِ کرم تصدیق کریں۔
+        ˌaːp keː ˌakaːˈuːnʈ seː ˈeːk mˌəʃkˈuːk ʈrˌaːnzˈeːkʃan rˈoːki ɡˈai hɛ
+bˌəraːhˈeː kˈʌrəm tˌəʂdˈiːq kˈʌrẽː
+
+0205 [PR] نیا پاس ورڈ کم از کم آٹھ حروف کا ہو اور اس میں ایک عدد شامل ہو۔
+        nˈajaː pˈaːs ʋˈʌrɖ kˈʌm ˈaz kˈʌm ˈaːʈʰ hʊrˈuːf kaː hˈoː ɔr ɪs mˈẽ ˈeːk ˈadəd ʃˈaːmɪl hˈoː
+
+0206 [PR] کیا آپ اپنی اسٹیٹمنٹ ماہانہ چاہتے ہیں یا سہ ماہی؟
+        kjˈaː ˌaːp ˈapnˌiː ɪsʈˈiːʈəmˌənʈ maːhˈaːnˌa cˈaːhteː hẽ jˈaː sˈɛh mˈaːhi
+
+0207 [PR] آپ کی ٹرانسفر کی حد آج کے لیے ختم ہو چکی ہے، کل دوبارہ کوشش کریں۔
+        ˌaːp ki ʈrˈaːnsəfˌər ki hˈʌd ˈaːɟ keː lˈiːeː xˈatm hˈoː cʊkˈiː hɛ
+kˈʌl doːbˈaːrˌa kˈoːʃɪʃ kˈʌrẽː
+
+0208 [PR] براہِ کرم لائن پر رہیں، میں آپ کا اکاؤنٹ اور آخری ٹرانزیکشن دونوں دیکھ رہی ہوں۔
+        bˌəraːhˈeː kˈʌrəm lˈaɪn pˈʌr rˈʌhẽː
+mˈẽ ˌaːp kaː ˌakaːˈuːnʈ ɔr ˈaːxrˌiː ʈrˌaːnzˈeːkʃan dˈoːnõː dˈeːkʰ rˈʌhi huːn
+
+0209 [PR] اگر ادائیگی ڈیو ڈیٹ کے بعد ہوئی تو لیٹ پیمنٹ چارج لاگو ہو گا۔
+        aɡˈar ˌadaːˈiːɡi ɖjˈuː ɖˈeːʈ keː bˈaːd hˈuːi tˈoː lˈeːʈ pˈeːmənʈ cˈaːrɟ lˈaːɡoː hˈoː ɡaː
+
+0210 [PR] آپ کا کارڈ ایکٹیویٹ ہے مگر آن لائن ٹرانزیکشن کی سہولت بند ہے۔
+        ˌaːp kaː kˈaːrɖ ˌeːkʈeːʋˈiːʈ hɛ maɡˈar ˈaːn lˈaɪn ʈrˌaːnzˈeːkʃan ki sˌahuːlˈat bˈʌnd hɛ
+
+0211 [PR] کیا آپ کو کیش بیک اسی مہینے چاہیے یا اگلی اسٹیٹمنٹ میں؟
+        kjˈaː ˌaːp kˈoː kˈeːʃ bˈeːk ˈɪsi məhˈiːneː cˈaːhjeː jˈaː ˈaɡlˌiː ɪsʈˈiːʈəmˌənʈ mˈẽ
+
+0212 [PR] میں آپ کی درخواست پورٹل پر درج کر رہی ہوں، اس میں چند لمحے لگیں گے۔
+        mˈẽ ˌaːp ki dˌarxʋˈaːst pˈoːrʈəl pˈʌr dˈarɟ kar rˈʌhi huːn
+ɪs mˈẽ cˈʌnd lˈʌmhˌeː lˈʌɡẽː ɡeː
+
+0213 [PR] آپ کی نئی چیک بک تیار ہے اور برانچ سے وصول کی جا سکتی ہے۔
+        ˌaːp ki nˈʌi cˈeːk bˈʌk tˌaiˈaːr hɛ ɔr bərˈaːnc seː ʋʊʂˈuːl ki ɟˈaː sˈʌktˌiː hɛ
+
+0214 [PR] بایومیٹرک ناکام ہونے کی صورت میں آپ پن کے ذریعے تصدیق کر سکتے ہیں۔
+        bˌaːeːoːmˈiːʈərˌək naːkˈaːm hˈoːneː ki ʂuːrˈat mˈẽ ˌaːp pˈʌn keː zarˈiːeː tˌəʂdˈiːq kar sˈʌktˌeː hẽ
+
+0215 [PR] آپ کا اکاؤنٹ فعال ہے، البتہ کریڈٹ کارڈ کی درخواست ابھی زیرِ غور ہے۔
+        ˌaːp kaː ˌakaːˈuːnʈ fˈaːl hɛ
+albˈʌta krˈeːɖɪʈ kˈaːrɖ ki dˌarxʋˈaːst ˈabʰi zˌeːrˈeː ɣˈoːr hɛ
+
+0216 [PR] پہلے اپنا سی این آئی سی نمبر درج کریں، پھر ولادت کا سال بتائیں۔
+        pˈɛhleː ˈapnˌaː sˈiː ˈeːn ˈaːi sˈiː nˈʌmbər dˈarɟ kˈʌrẽː
+phˈɪr ʋəlˈaːdət kaː sˈaːl bətˈaːẽː
+
+0217 [PR] آپ کی رقم منتقل ہو چکی ہے؛ وصول کنندہ کے اکاؤنٹ میں چند منٹ میں ظاہر ہو گی۔
+        ˌaːp ki rˈʌqəm mˌʊntˈaqɪl hˈoː cʊkˈiː hɛ
+ʋʊʂˈuːl kʊnˈanda keː ˌakaːˈuːnʈ mˈẽ cˈʌnd mˈɪnɪʈ mˈẽ ʐˈaːhɪr hˈoː ɡi
+
+0218 [PR] کیا یہ درست ہے کہ آپ اپنا موبائل نمبر اور ای میل دونوں تبدیل کرنا چاہتے ہیں؟
+        kjˈaː jeːh dˈʊrʊst hɛ ke ˌaːp ˈapnˌaː moːbˈaɪl nˈʌmbər ɔr ˈiː mˈeːl dˈoːnõː tˌəbdˈiːl kˌarnaː cˈaːhteː hẽ
+
+0219 [PR] اگر آپ نے حال ہی میں پاس ورڈ تبدیل کیا ہے تو نئے پاس ورڈ سے لاگ اِن کریں۔
+        aɡˈar ˌaːp neː hˈaːl hˈiː mˈẽ pˈaːs ʋˈʌrɖ tˌəbdˈiːl kjˈaː hɛ tˈoː nˈʌeː pˈaːs ʋˈʌrɖ seː lˈaːɡ ˈɪn kˈʌrẽː
+
+0220 [PR] آپ کے کارڈ پر بین الاقوامی ٹرانزیکشن کی اجازت فی الحال نہیں ہے۔
+        ˌaːp keː kˈaːrɖ pˈʌr bˈeːn alˈaqʋaːmˌiː ʈrˌaːnzˈeːkʃan ki ɪɟˈaːzat fˌɪlhˈaːl nahˈiːn hɛ
+
+0221 [PR] درخواست جمع ہو گئی ہے؛ منظوری کے بعد آپ کو ایس ایم ایس موصول ہو گا۔
+        dˌarxʋˈaːst ɟˈʌmaː hˈoː ɡˈai hɛ
+mˌanʐˈuːri keː bˈaːd ˌaːp kˈoː ˈeːs ˈeːm ˈeːs moːʂˈoːl hˈoː ɡaː
+
+0222 [PR] میں آپ کو ری فنڈ اور ریورسل کے فرق کے بارے میں مختصر بتاتی ہوں۔
+        mˈẽ ˌaːp kˈoː rˈiː fˈʌnɖ ɔr reːˈoːrəsˌəl keː fˈarq keː bˈaːreː mˈẽ mˌʊxtaʂˈar bətˈaːti huːn
+
+0223 [PR] آپ کی شکایت اعلیٰ حکام کو بھیج دی گئی ہے اور اڑتالیس گھنٹے میں جواب ملے گا۔
+        ˌaːp ki ʃˌɪkaːjˈat ˈaːlaː hʊkˈaːm kˈoː bʰˈeːɟ dˈiː ɡˈai hɛ ɔr ˌar.taːlˈiːs ɡʰˈʌnʈˌeː mˈẽ ɟˈaʋaːb mˈɪleː ɡaː
+
+0224 [LV] براہِ کرم آفر قبول کرنے کے لیے مینو میں سے ہاں کا آپشن منتخب کریں۔
+        bˌəraːhˈeː kˈʌrəm ˈaːfər qʊbˈuːl kˌarneː keː lˈiːeː mˈeːnoː mˈẽ seː hˈãː kaː ˈaːpəʃˌən mˌʊntˈaxəb kˈʌrẽː
+
+0225 [LV] آپ کے پوائنٹس ری وارڈ اسکیم کے تحت اگلے مہینے دگنے ہو جائیں گے۔
+        ˌaːp keː pˌʊaːˈɪnʈs rˈiː ʋˈaːrɖ ˌaskˈiːm keː tˈɛhɛt ˈaɡlˌeː məhˈiːneː dˈʌɡnˌeː hˈoː ɟˈaːẽː ɡeː
+
+0226 [LV] روٹ نمبر غلط ہونے کی وجہ سے ٹرانسفر مکمل نہ ہو سکی۔
+        rˈuːʈ nˈʌmbər ɣˈʌlət hˈoːneː ki ʋˈʌɟˌa seː ʈrˈaːnsəfˌər mʊkˈammal nˈa hˈoː sˈʌki
+
+0227 [LV] نیا کوڈ حاصل کرنے کے لیے ری سینڈ دبائیں، پرانا کوڈ اب کارآمد نہیں۔
+        nˈajaː kˈoːɖ hˈaːʂɪl kˌarneː keː lˈiːeː rˈiː sˈeːnɖ dəbˈaːẽː
+pʊrˈaːnaː kˈoːɖ ˈab kaːrˈaːməd nahˈiːn
+
+0228 [LV] آپ کی ای میل پر بھیجا گیا لنک صرف چوبیس گھنٹے کے لیے فعال ہے۔
+        ˌaːp ki ˈiː mˈeːl pˈʌr bʰˈeːɟaː ɡˌajaː lˈɪnk ʂˈɪrf coːbˈiːs ɡʰˈʌnʈˌeː keː lˈiːeː fˈaːl hɛ
+
+0229 [LV] اسکرین پر موجود کیو آر کوڈ کو ایپ کے کیمرے سے اسکین کریں۔
+        ˌasəkrˈiːn pˈʌr moːɟˈuːd kˈeːoː ˈaːr kˈoːɖ kˈoː ˈeːp keː kˈeːmrˌeː seː ˌaskˈiːn kˈʌrẽː
+
+0230 [LV] بیلنس انکوائری کے لیے مینو میں دو دبائیں، منی اسٹیٹمنٹ کے لیے تین۔
+        beːlˈʌns ɪnkʋˈaɪri keː lˈiːeː mˈeːnoː mˈẽ dˈoː dəbˈaːẽː
+mˈʌni ɪsʈˈiːʈəmˌənʈ keː lˈiːeː tˈiːn
+
+0231 [LV] آپ کے کارڈ پر لاؤنج ایکسیس کی سہولت مفت فراہم کی گئی ہے۔
+        ˌaːp keː kˈaːrɖ pˈʌr laːˈoːnɟ ˌeːksˈiːs ki sˌahuːlˈat mˈʊft fərˈaːhəm ki ɡˈai hɛ
+
+0232 [NV] آپ کی ادائیگی کی حیثیت اس وقت پینڈنگ ہے۔
+        ˌaːp ki ˌadaːˈiːɡi ki hˌeːsiˈat ɪs ʋˈaqt pˈeːnɖɪnɡ hɛ
+
+0233 [NV] ٹرانزیکشن کامیاب یعنی سکسیسفل رہا، رسید بھیج دی گئی ہے۔
+        ʈrˌaːnzˈeːkʃan kˈaːmjaːb jˈaːni sˌəksˈiːsəfˌəl rˈʌhaː
+rəsˈiːd bʰˈeːɟ dˈiː ɡˈai hɛ
+
+0234 [NV] ٹرانزیکشن فیل ہو گیا؛ رقم آپ کے اکاؤنٹ میں محفوظ ہے۔
+        ʈrˌaːnzˈeːkʃan fˈeːl hˈoː ɡˌajaː
+rˈʌqəm ˌaːp keː ˌakaːˈuːnʈ mˈẽ mˌeːhfˈuːʐ hɛ
+
+0235 [NV] سسٹم میں ایرر آ گیا ہے، براہِ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔
+        sɪsʈˈam mˈẽ ˈeːrər ˈaː ɡˌajaː hɛ
+bˌəraːhˈeː kˈʌrəm tʰˈoːr.i dˈeːr bˈaːd doːbˈaːrˌa kˈoːʃɪʃ kˈʌrẽː
+
+0236 [NV] لاگ آؤٹ کرنے کے بعد اپنا پاس ورڈ کسی کو نہ بتائیں۔
+        lˈaːɡ aːˈoːʈ kˌarneː keː bˈaːd ˈapnˌaː pˈaːs ʋˈʌrɖ kˈɪsi kˈoː nˈa bətˈaːẽː
+
+0237 [NV] آپ کی اسٹیٹمنٹ ڈاؤن لوڈ کے لیے تیار ہے۔
+        ˌaːp ki ɪsʈˈiːʈəmˌənʈ ɖaːˈoːn lˈoːɖ keː lˈiːeː tˌaiˈaːr hɛ
+
+0238 [NV] دستاویز اپ لوڈ کرنے کے بعد سبمٹ کا بٹن دبائیں۔
+        dˈastaːʋˌeːz ˈap lˈoːɖ kˌarneː keː bˈaːd sˈʌbəmˌəʈ kaː bˈʌʈən dəbˈaːẽː
+
+0239 [NV] برانچ منیجر سے ملاقات کے لیے پہلے وقت لے لیں۔
+        bərˈaːnc mənˈiːɟər seː mˌʊlaːqˈaːt keː lˈiːeː pˈɛhleː ʋˈaqt lˈeː lˈẽ
+
+0240 [NV] لیٹ پیمنٹ چارج سے بچنے کے لیے کم از کم رقم وقت پر ادا کریں۔
+        lˈeːʈ pˈeːmənʈ cˈaːrɟ seː bˈʌcnˌeː keː lˈiːeː kˈʌm ˈaz kˈʌm rˈʌqəm ʋˈaqt pˈʌr ˈadaː kˈʌrẽː
+
+0241 [NV] آپ کا نیا ایڈریس ریکارڈ میں کنفرم کر دیا گیا ہے۔
+        ˌaːp kaː nˈajaː ˈeːɖreːs reːkˈaːrɖ mˈẽ kˈʌnəfˌərəm kar dˈiːaː ɡˌajaː hɛ
+
+0242 [NV] کیش بیک آپ کی اگلی بلنگ سائیکل میں خودبخود ایڈجسٹ ہو جائے گا۔
+        kˈeːʃ bˈeːk ˌaːp ki ˈaɡlˌiː bˈʌlənɡ saːˈiːkəl mˈẽ xˈʊdbəxˌoːd ˈeːɖəɟɪsʈ hˈoː ɟˈaːeː ɡaː
+
+0243 [NV] آپ کا اکاؤنٹ اسٹیٹس فعال ہے اور کوئی پابندی موجود نہیں۔
+        ˌaːp kaː ˌakaːˈuːnʈ ɪsʈˈiːʈs fˈaːl hɛ ɔr kˈoːi paːbˈʌndi moːɟˈuːd nahˈiːn
+
+0244 [DR] درج کردہ تاریخ اور ٹرانزیکشن کی رقم آپس میں مطابقت نہیں رکھتیں۔
+        dˈarɟ kˈʌrdˌa taːrˈiːx ɔr ʈrˌaːnzˈeːkʃan ki rˈʌqəm ˈaːpəs mˈẽ mˌʊtaːbɪqˈat nahˈiːn rˈʌkʰtˌĩː
+
+0245 [DR] تصدیقی کال کے دوران اپنا کریڈٹ کارڈ نمبر یا او ٹی پی کبھی نہ بتائیں۔
+        tˌəʂdˈiːqi kˈaːl keː doːrˈaːn ˈapnˌaː krˈeːɖɪʈ kˈaːrɖ nˈʌmbər jˈaː ˈoː ʈˈiː pˈiː kˈʌbʰi nˈa bətˈaːẽː
+
+0246 [DR] آپ کے ڈیبٹ کارڈ کی تجدید کی درخواست منظور کر لی گئی ہے۔
+        ˌaːp keː ɖˈeːbəʈ kˈaːrɖ ki tˌəɟdˈiːd ki dˌarxʋˈaːst mˌanʐˈuːr kar lˈiː ɡˈai hɛ
+
+0247 [DR] تاخیر سے ادائیگی پر مارک اپ اور لیٹ پیمنٹ چارج دونوں لاگو ہوں گے۔
+        taːxˈiːr seː ˌadaːˈiːɡi pˈʌr mˈaːrk ˈap ɔr lˈeːʈ pˈeːmənʈ cˈaːrɟ dˈoːnõː lˈaːɡoː hˈõː ɡeː
+
+0248 [DR] دفتر کے اوقات کے بعد کی گئی ٹرانزیکشن اگلے کاروباری دن درج ہو گی۔
+        dˌaftˈar keː ˌoːqˈaːt keː bˈaːd ki ɡˈai ʈrˌaːnzˈeːkʃan ˈaɡlˌeː kˌaːroːbˈaːri dˈɪn dˈarɟ hˈoː ɡi
+
+0249 [DR] آپ کی توثیق مکمل ہے؛ اب اپڈیٹ شدہ اسٹیٹمنٹ ڈاؤن لوڈ کی جا سکتی ہے۔
+        ˌaːp ki toːsˈiːq mʊkˈammal hɛ
+ˈab ˌapɖˈiːʈ ʃˈʊdˌa ɪsʈˈiːʈəmˌənʈ ɖaːˈoːn lˈoːɖ ki ɟˈaː sˈʌktˌiː hɛ
+
+0250 [PR] کیا آپ اپنے ڈیبٹ کارڈ سے آن لائن ٹرانزیکشن کی سہولت فعال کرنا چاہتے ہیں؟
+        kjˈaː ˌaːp ˈapnˌeː ɖˈeːbəʈ kˈaːrɖ seː ˈaːn lˈaɪn ʈrˌaːnzˈeːkʃan ki sˌahuːlˈat fˈaːl kˌarnaː cˈaːhteː hẽ
+
+0251 [PR] آپ کا ٹرانزیکشن روک دیا گیا ہے؛ اگر یہ آپ نے کی ہے تو ایک دبائیں۔
+        ˌaːp kaː ʈrˌaːnzˈeːkʃan rˈoːk dˈiːaː ɡˌajaː hɛ
+aɡˈar jeːh ˌaːp neː ki hɛ tˈoː ˈeːk dəbˈaːẽː
+
+0252 [PR] میں آپ کا اکاؤنٹ، کارڈ اور آخری ٹرانزیکشن ایک ساتھ دیکھ رہی ہوں۔
+        mˈẽ ˌaːp kaː ˌakaːˈuːnʈ
+kˈaːrɖ ɔr ˈaːxrˌiː ʈrˌaːnzˈeːkʃan ˈeːk sˈaːtʰ dˈeːkʰ rˈʌhi huːn
+
+0253 [PR] اگر کیو آر کوڈ اسکین نہ ہو تو نیچے دیا گیا ریفرنس نمبر درج کریں۔
+        aɡˈar kˈeːoː ˈaːr kˈoːɖ ˌaskˈiːn nˈa hˈoː tˈoː nˈiːceː dˈiːaː ɡˌajaː rˌeːfərˈʌns nˈʌmbər dˈarɟ kˈʌrẽː
+
+0254 [PR] پہلے بینیفیشری کی تصدیق ہو گی، پھر ٹرانسفر کی حد مقرر کی جائے گی۔
+        pˈɛhleː bˌeːnifˈiːʃrˌiː ki tˌəʂdˈiːq hˈoː ɡi
+phˈɪr ʈrˈaːnsəfˌər ki hˈʌd mˌʊqarˈar ki ɟˈaːeː ɡi
+
+0255 [PR] آپ کی ری فنڈ کی درخواست مرچنٹ کو بھیج دی گئی ہے، جواب کا انتظار کریں۔
+        ˌaːp ki rˈiː fˈʌnɖ ki dˌarxʋˈaːst mˈʌrcənʈ kˈoː bʰˈeːɟ dˈiː ɡˈai hɛ
+ɟˈaʋaːb kaː ˌɪntɪʐˈaːr kˈʌrẽː
+
+0256 [PR] کیا آپ چاہتے ہیں کہ آپ کو ہر ٹرانزیکشن پر ایس ایم ایس الرٹ ملے؟
+        kjˈaː ˌaːp cˈaːhteː hẽ ke ˌaːp kˈoː hˈʌr ʈrˌaːnzˈeːkʃan pˈʌr ˈeːs ˈeːm ˈeːs alˈʌrʈ mˈɪleː
+
+0257 [PR] آپ کے کارڈ کی لمٹ عارضی طور پر بڑھا دی گئی ہے، یہ اکتیس تاریخ کو ختم ہو گی۔
+        ˌaːp keː kˈaːrɖ ki lˈʌməʈ ˈaːrzˌiː tˈɔːr pˈʌr bˈar.haː dˈiː ɡˈai hɛ
+jeːh ˌaktˈiːs taːrˈiːx kˈoː xˈatm hˈoː ɡi
+
+0258 [PR] درخواست جمع ہو چکی ہے؛ منظوری کی صورت میں نیا کارڈ برانچ سے وصول کریں۔
+        dˌarxʋˈaːst ɟˈʌmaː hˈoː cʊkˈiː hɛ
+mˌanʐˈuːri ki ʂuːrˈat mˈẽ nˈajaː kˈaːrɖ bərˈaːnc seː ʋʊʂˈuːl kˈʌrẽː
+

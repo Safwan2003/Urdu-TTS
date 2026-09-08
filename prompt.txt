@@ -15,7 +15,8 @@ You are resuming work on this repo. Do this in order:
   3. Read  finetune_low_rank_adaptation_colab.ipynb  — the actual pipeline
      (cells 0-25; cell 5/12 is the checkpoint gate, 5b/14 the listen test)
   4. Read  tools/build_ckpt_from_onnx.py  and  tools/verify_voice.py
-  5. Skim  dataset/metadata.csv (123 lines) — the training corpus
+  5. Skim  dataset/metadata.csv (185 lines) — the training corpus
+     (123 original + 62 enrichment clips 0124-0185; see finetuning_brief.txt §3)
 Then the sections below.
 
 Do NOT go spelunking in sibling repos (VoxReach-Bank, Urdu_TTS_VITS2, …). The
